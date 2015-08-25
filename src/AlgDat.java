@@ -1,8 +1,10 @@
 import java.util.NoSuchElementException;
+import hjelpeklasser.*;
 
 /**
  * Created by HansChristian on 18.08.2015.
  */
+
 public class AlgDat
 {
     public static int maks(int[] a)
@@ -46,7 +48,7 @@ public class AlgDat
 
     public static void main(String... args)
     {
-        int[] a = {10, 5, 7, 2, 9, 1, 3, 8, 4, 6};
+        int[] a = {1,1,33,2,4,32,45};
         int x = maks(a);
         System.out.println(a[x]);
         System.out.println(x);
