@@ -9,11 +9,11 @@ import java.util.NoSuchElementException;
 
 public class Oblig1 {
 
+    // OPPGAVE-1
 
     // Teorispørsmål
     public static int maks(int[] a) {
         if (a.length < 1) throw new NoSuchElementException("Tabellen er tom");
-
         for (int j = 0; j < a.length; j++) {
             for (int i = 1; i < a.length; i++) {
                 if (a[i - 1] > a[i]) {
@@ -29,12 +29,17 @@ public class Oblig1 {
 
 
     // Teorispørsmål
-    public static int ombyttinger(int[] a){
-
+    public static int ombyttinger(int[] a) {
 
         return -1;
     }
 
+
+    // OPPGAVE-2
+
+    public static void sortering(int[] a){
+
+    }
 
     public static void main(String... args) {
 
@@ -43,9 +48,11 @@ public class Oblig1 {
         int[] c = {5, 4, 3, 2, 1};
         int[] d = {1, 2, 3, 4, 5};
 
-        System.out.println(Arrays.toString(a));
-        System.out.println(maks(a));
-        System.out.println(ombyttinger(a));
+        int[] mid = c;
+
+        System.out.println(Arrays.toString(mid));
+        System.out.println(maks(mid));
+        System.out.println(ombyttinger(mid));
 
     }
 }
