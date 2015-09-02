@@ -1,13 +1,12 @@
 package algdat;
 
 import java.util.NoSuchElementException;
+
 import hjelpeklasser.*;
 
 
-public class AlgDat
-{
-    public static int maks(int[] a)
-    {
+public class AlgDat {
+    public static int maks(int[] a) {
         if (a.length < 1) throw new NoSuchElementException("Tabellen er tom");
 
         int m = 0;
@@ -23,8 +22,8 @@ public class AlgDat
         return m;
     }
 
-    public static int min(int[] a)
-    {
+
+    public static int min(int[] a) {
         if (a.length < 1) throw new NoSuchElementException("Tabellen er tom");
 
         int m = 0;
@@ -40,14 +39,14 @@ public class AlgDat
         return m;
     }
 
-    public static int[] minmaks(int[] a)
-    {
-        return new int[]{min(a),maks(a)};
+
+    public static int[] minmaks(int[] a) {
+        return new int[]{min(a), maks(a)};
     }
 
-    public static void main(String... args)
-    {
-        int[] a = {1,1,33,2,4,32,45};
+
+    public static void main(String... args) {
+        int[] a = {1, 1, 33, 2, 4, 32, 45};
         int x = maks(a);
         System.out.println(a[x]);
         System.out.println(x);
