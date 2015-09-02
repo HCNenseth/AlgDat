@@ -1,1 +1,1 @@
-# DATS2300 AlgDat
+# DATS2300 algdat.AlgDat

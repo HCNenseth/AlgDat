@@ -1,9 +1,8 @@
+package algdat;
+
 import java.util.NoSuchElementException;
 import hjelpeklasser.*;
 
-/**
- * Created by HansChristian on 18.08.2015.
- */
 
 public class AlgDat
 {
