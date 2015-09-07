@@ -67,14 +67,15 @@ public class Oblig1 {
     public static int medlemsnummer() {
 
         int i = 6;
-        int start = 10000 % 6;
-        int slutt = 100000 % 6;
+        int start = 1296; // 10000 base 6
+        int slutt = 7775; // 55555 base 6
 
         for (int j = start; j <= slutt; j++) {
             char[] mnr = Integer.toString(j, i).toCharArray();
+            for (char x : mnr) {
 
+            }
         }
-
         return -1;
     }
 
