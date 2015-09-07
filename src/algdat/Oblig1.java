@@ -67,10 +67,40 @@ public class Oblig1 {
     public static int medlemsnummer() {
 
 
+        return -1;
+    }
 
+    // OPPGAVE-4 //////////////////////////////////////////
+
+    public static int antallUlikeUsortert(int[] a) {
+
+        
 
         return -1;
     }
+
+
+    // OPPGAVE-5 //////////////////////////////////////////
+
+    public static void rotasjon(char[] a) {
+
+    }
+
+    // OPPGAVE-6 //////////////////////////////////////////
+
+
+    // OPPGAVE-7 //////////////////////////////////////////
+
+
+    // OPPGAVE-8 //////////////////////////////////////////
+
+
+    // OPPGAVE-9 //////////////////////////////////////////
+
+
+    // OPPGAVE-10 /////////////////////////////////////////
+
+
 
 /*
     public static void main(String... args) {
