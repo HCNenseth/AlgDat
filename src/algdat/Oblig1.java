@@ -95,7 +95,7 @@ public class Oblig1 {
     public static void main(String[] args) {
         int antallFeil = 0;
 
-        //antallFeil += oppgave1();
+        antallFeil += oppgave1();
         antallFeil += oppgave2();
         //antallFeil += oppgave3();
         //antallFeil += oppgave4();
@@ -114,7 +114,6 @@ public class Oblig1 {
     }
 
 
-    /*
     ///// Oppgave 1 //////////////////////////////////////
 
     public static int oppgave1() {
@@ -169,7 +168,7 @@ public class Oblig1 {
         return antallFeil;
     }
 
-*/
+
 
 
     ///// Oppgave 2 //////////////////////////////////////
