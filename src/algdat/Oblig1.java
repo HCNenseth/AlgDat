@@ -1,7 +1,6 @@
 package algdat;
 
-import java.util.Arrays;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 /**
  * Hans Christian Nenseth s236334
@@ -66,51 +65,144 @@ public class Oblig1 {
 
     public static int medlemsnummer() {
 
+        int ant = 0;
         int i = 6;
         int start = 1296; // 10000 base 6
         int slutt = 7775; // 55555 base 6
 
         for (int j = start; j <= slutt; j++) {
-            char[] mnr = Integer.toString(j, i).toCharArray();
-            for (char x : mnr) {
+            char[] mdlnr = Integer.toString(j, i).toCharArray();
 
+            for (int k = 0; k < mdlnr.length; k++) {
+
+                for (int m = 1; m < mdlnr.length; m++) {
+                    if (mdlnr[k] == mdlnr[m]) ant++;
+                }
             }
         }
-        return -1;
+        System.out.println(ant);
+        return ant;
     }
 
     // OPPGAVE-4 //////////////////////////////////////////
 
     public static int antallUlikeUsortert(int[] a) {
 
+        if (a.length <= 1)
+            return a.length;
 
-        return -1;
+        int antall = a.length;
+
+        for (int i = 0; i < a.length; i++) {
+            for (int j = i + 1; j < a.length; j++) {
+                if (a[j] == a[i]) {
+                    antall--;
+                    break;
+                }
+            }
+        }
+
+        return antall;
     }
 
 
     // OPPGAVE-5 //////////////////////////////////////////
 
     public static void rotasjon(char[] a) {
+        if (a.length <= 1)
+            return;
 
+        char k = a[a.length - 1];
+
+        for (int i = a.length - 1; i >= 1; i--) {
+            a[i] = a[i - 1];
+        }
+
+        a[0] = k;
     }
 
     // OPPGAVE-6 //////////////////////////////////////////
 
     public static void rotasjon(char[] a, int k) {
+        if (a.length <= 1)
+            return;
 
+        k %= a.length;
 
+        char[] tmp = new char[Math.abs(k)];
+        int c = 0;
+
+        // Høyre
+        if (k > 0) {
+            for (int i = a.length - k; i < a.length; i++)
+                tmp[c++] = a[i];
+
+            for (int i = a.length - k - 1; i >= 0; i--) {
+                a[k + i] = a[i];
+                if (i < k)
+                    a[i] = tmp[i];
+            }
+
+            // Venstre
+        } else if (k < 0) {
+            k = Math.abs(k);
+
+            for (int i = 0; i < k; i++)
+                tmp[i] = a[i];
+
+            for (int i = 0; i <= a.length - k - 1; i++)
+                a[i] = a[k + i];
+
+            for (int i = 0; i < tmp.length; i++)
+                a[a.length - i - 1] = tmp[k - i - 1];
+        }
     }
 
 
     // OPPGAVE-7 //////////////////////////////////////////
 
     public static String flett(String s, String t) {
+        char[] txt = new char[s.length() + t.length()];
 
-        return "";
+        char[] a = s.toCharArray();
+        char[] b = t.toCharArray();
+
+        int ac = 0;
+        int bc = 0;
+        int j = 0;
+
+        for (int i = 0; i < Math.max(s.length(), t.length()); i++) {
+            if (ac < s.length()) {
+                txt[j++] = a[ac++];
+            }
+            if (bc < t.length()) {
+                txt[j++] = b[bc++];
+            }
+        }
+
+        return String.valueOf(txt);
     }
 
     public static String flett(String... s) {
-        return "";
+        String r = "";
+        int l = 0;
+
+        for (String x : s) {
+            l += x.length();
+        }
+
+        int[] c = new int[s.length];
+
+        for (int i = 0; i < l; i++) {
+            for (int j = 0; j < s.length; j++) {
+                if (c[j] < s[j].length()) {
+                    r += s[j].toCharArray()[c[j]];
+                    c[j]++;
+                }
+            }
+        }
+
+        return r;
     }
 
 
