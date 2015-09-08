@@ -221,8 +221,37 @@ public class Oblig1 {
     // OPPGAVE-9 //////////////////////////////////////////
 
     public static int[] kMinst(int[] a, int k) {
+        if (k < 1)
+            throw new NoSuchElementException("k(" + k + ") kan ikke være mindre enn 1 ");
 
-        return a;
+        if (k > a.length)
+            throw new IllegalArgumentException("k(" + k + ") kan ikke være større enn lengden av a = (" + a.length + ")");
+
+        int[] r = new int[k];
+
+        for (int i = 0; i < k; i++) {
+            r[i] = a[i];
+        }
+
+        Arrays.sort(r);
+
+        for (int i = k; i < a.length; i++) {
+            if (a[i] < r[k - 1]) {
+                for (int j = k - 1; j > 0; j--) {
+                    if (a[i] >= r[j]) {
+                        r[j + 1] = a[i];
+                        break;
+                    } else {
+                        r[j] = r[j - 1];
+                    }
+                }
+                if (a[i] < r[0]) {
+                    r[0] = a[i];
+                }
+            }
+        }
+
+        return r;
 
     }
 

@@ -18,7 +18,7 @@ public class Oblig1Test {
         antallFeil += oppgave6();
         antallFeil += oppgave7();
         //antallFeil += oppgave8();
-        //antallFeil += oppgave9();
+        antallFeil += oppgave9();
         //antallFeil += oppgave10();
 
         if (antallFeil == 0) {
