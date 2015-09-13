@@ -71,19 +71,31 @@ public class Oblig1 {
         int slutt = 7775; // 55555 base 6
 
         for (int j = start; j <= slutt; j++) {
-            char[] mdlnr = Integer.toString(j, i).toCharArray();
+            String mdlnr = Integer.toString(j, i);
 
-            for (int k = 0; k < mdlnr.length; k++) {
+            Map<Character, Integer> antallSiffer = new HashMap<>(Math.min(mdlnr.length(), 5));
+            for (int k = 0; k < mdlnr.length(); k++) {
+                char charAt = mdlnr.charAt(k);
 
-                for (int m = 1; m < mdlnr.length; m++) {
-                    if (mdlnr[k] == mdlnr[m]) ant++;
+                if (!antallSiffer.containsKey(charAt)) {
+                    antallSiffer.put(charAt, 1);
+                } else {
+                    antallSiffer.put(charAt, antallSiffer.get(charAt) + 1);
                 }
             }
+
+            boolean erLovligSiffer = true;
+
+            for (Character c : antallSiffer.keySet()) {
+                if ((antallSiffer.get(c) > 2)) {
+                    erLovligSiffer = false;
+                }
+            }
+            if (erLovligSiffer)
+                ant++;
         }
-        System.out.println(ant);
         return ant;
     }
-
     // OPPGAVE-4 //////////////////////////////////////////
 
     public static int antallUlikeUsortert(int[] a) {
@@ -213,6 +225,7 @@ public class Oblig1 {
         return a;
     }
 
+
     public static int[] tredjeMin(int[] a) {
 
         return a;
@@ -225,40 +238,51 @@ public class Oblig1 {
             throw new NoSuchElementException("k(" + k + ") kan ikke være mindre enn 1 ");
 
         if (k > a.length)
-            throw new IllegalArgumentException("k(" + k + ") kan ikke være større enn lengden av a = (" + a.length + ")");
+            throw new IllegalArgumentException("k(" + k + ") kan ikke være større" +
+                    " enn lengden av a = (" + a.length + ")");
 
-        int[] r = new int[k];
+        int[] verdier = new int[k];
 
         for (int i = 0; i < k; i++) {
-            r[i] = a[i];
+            verdier[i] = a[i];
         }
 
-        Arrays.sort(r);
+        Arrays.sort(verdier);
 
         for (int i = k; i < a.length; i++) {
-            if (a[i] < r[k - 1]) {
+            if (a[i] < verdier[k - 1]) {
                 for (int j = k - 1; j > 0; j--) {
-                    if (a[i] >= r[j]) {
-                        r[j + 1] = a[i];
+                    if (a[i] >= verdier[j]) {
+                        verdier[j + 1] = a[i];
                         break;
                     } else {
-                        r[j] = r[j - 1];
+                        verdier[j] = verdier[j - 1];
                     }
                 }
-                if (a[i] < r[0]) {
-                    r[0] = a[i];
+                if (a[i] < verdier[0]) {
+                    verdier[0] = a[i];
                 }
             }
         }
-
-        return r;
-
+        return verdier;
     }
 
     // OPPGAVE-10 /////////////////////////////////////////
 
     public static boolean inneholdt(String a, String b) {
+        int[] tpA = new int[250];
+        int[] tpB = new int[250];
 
+        char[] stringA = a.toCharArray();
+        char[] stringB = b.toCharArray();
+
+        for (char i : stringA) tpA[i]++;
+        for (char i : stringB) tpB[i]++;
+
+        for (int i = 0; i < tpA.length; i++)
+            if (tpA[i] > 0)
+                if (tpB[i] < tpA[i])
+                    return false;
         return true;
     }
 }
